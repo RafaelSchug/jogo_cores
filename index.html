@@ -92,7 +92,7 @@
 		button {
 		    width: 100px;
 		    height: 40px;
-		    background: linear-gradient(#abf5b1, #4ba74b);
+		    background: linear-gradient(#61e091, #38af65);
 		    border: 1px solid #a5a5a5;
 		    border-radius: 2px;
 		    font-family: monospace;
@@ -106,13 +106,13 @@
 		    overflow: hidden;
 		}
 		button:hover {
-			background: linear-gradient(#93ef9a, #247524);
+			background: linear-gradient(#54ce82, #408c5c);
 		}
 		button:focus {
 			outline: none;
 		}
 		button:active {
-			background: linear-gradient(#9aeca1, #193319);
+			background: linear-gradient(#6bcc8f, #348252);
     		border: 1px solid #3bb36b;
 		}
 
@@ -223,6 +223,68 @@
 		.resultado.falha div {
 			background: orange;
 		}
+		.legenda {
+			font-family: sans-serif;
+		    width: 90%;
+		    padding: 12px;
+		    border-radius: 4px;
+		    box-shadow: 0 0 4px #b1b1b1;
+		    background: #fbf9f4;
+		    display: flex;
+		    flex-direction: column;
+		    align-items: center;
+		    margin-top: 15px;
+		    color: #676e88;
+		}
+		.legenda i:nth-child(1) {
+			font-size: 20px;
+			color: #888888;
+			margin-right: 10px;
+			min-width: 20px;
+		}
+		.legenda p {
+			width: 100%;
+			margin: 10px;
+			padding-bottom: 8px;
+			border-bottom: 1px dashed #aba9a9;
+
+			
+		}
+
+		.legenda div {
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			width: 100%;
+		}
+
+		.left_info {
+			width: 50px;
+			min-width: 50px;
+			max-width: 50px;
+		}
+		.right_descr {
+
+		}
+		.legenda span {
+			padding: 2px 20px 2px 20px;
+		    border: 1px solid #bbbbbb;
+		    background-color: #54ce82;
+		    color: white;
+		    margin-top: -20px;
+		    width: 30%;
+		    text-align: center;
+		    border-radius: 3px 3px 0 0;
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		}
+		
+		.legenda_titulo i {
+			color: white!important;
+			font-size: 14px!important;
+		}
+
 	</style>
 </head>
 <body>
@@ -329,6 +391,48 @@
 			<td class="log_def3"></td>
 		</tr>
 	</table>
+	<div class="legenda">
+		<span class="legenda_titulo"><i class="fas fa-list-ul"></i>Informações</span>
+		<div>
+			<div class="left_info">
+				<i class='fas fa-check-double'></i>
+				<i class="fas fa-long-arrow-alt-right"></i>
+			</div>
+			<div class="right_descr">
+				<p>Indica que tanto a cor quanto a posição, estão corretas</p>
+			</div>
+		</div> 
+		<div>
+			<div class="left_info">
+				<i class='fas fa-check'></i>
+				<i class="fas fa-long-arrow-alt-right"></i>
+			</div>
+			<div class="right_descr">
+				<p>Indica que a cor está correta, porém, a posição está incorreta</p>
+			</div>
+		</div>
+		<div>
+			<div class="left_info">
+				<i class='fas fa-times'></i>
+				<i class="fas fa-long-arrow-alt-right"></i>
+			</div>
+			<div class="right_descr">
+				<p>Ambas estão incorretas</p>
+			</div>
+		</div> 
+		<div>
+			<div class="left_info">
+				<i class="fas fa-info"></i>
+				<i class="fas fa-long-arrow-alt-right"></i>
+			</div>
+			<div class="right_descr">
+				<p>Não é informado qual cor ou qual posição está correta</p>
+				<p>As flechas não fazem referência à posição ou cor correta</p>
+			</div>
+		</div>
+		
+		
+	</div>
 </div>
 
 
