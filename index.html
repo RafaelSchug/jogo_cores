@@ -11,6 +11,10 @@
 	<meta charset="utf-8">
 </head>
 	<style type="text/css">
+		@font-face{
+			font-family: calc;
+			src:url(fonts/digital-7.ttf);
+		}
 		.main_container {
 			min-width: 330px;
 		    width: 100%;
@@ -59,7 +63,6 @@
 
 		.seletor_cores {
 			width: 100%;
-			height: 150px;
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -122,8 +125,8 @@
 			display: flex;
 			justify-content: center;
 			position: relative;
-
-
+			margin-top: 10px;
+    		margin-bottom: 5px;
 		}
 		tr:nth-child(even) { background:#f1f1f1; }
 		tr { 
@@ -200,6 +203,7 @@
 		}
 		.div_row {
 			width: 100%;
+			height: 130px;
 			display: flex;
 			justify-content: center;
 		}
@@ -287,6 +291,34 @@
 			font-size: 14px!important;
 		}
 
+		.info_tentativas {
+		    border: 1px solid #bdbdbd;
+		    padding: 2px;
+		    display: flex;
+		    justify-content: space-between;
+		    align-items: center;
+		    font-family: calc;
+		    font-size: 16px;
+		    background: linear-gradient(#ffffff, #eaeaea);
+
+		}
+
+		.info_text {
+			color: #545454;
+		    text-shadow: 0 0 #bdbdbd;
+		    padding-left: 5px;
+    		padding-right: 5px;
+    		letter-spacing: 1px;
+		}
+		#remaining {
+		    background: #ffffff;
+		    width: 40px;
+		    padding: 3px;
+		    text-align: center;
+		    font-size: 20px;
+		    box-shadow: inset 0 0 2px 0px #616161;
+		}
+
 	</style>
 </head>
 <body>
@@ -308,6 +340,9 @@
 		</div>
 	</div>
 	<div class="container">
+		<div class="info_tentativas">
+			<span class="info_text">Tentativas Restantes:</span><span id="remaining">8</span>
+		</div>
 		<div class="seletor_cores div_row">
 			<div class="cor1" id="cor1" data-valor onclick="selecionar_cor(this)" oncontextmenu="return reverter_cor(this)"><i class="fas fa-palette"></i><i class="fas fa-paint-brush"></i></div>
 			<div class="cor2" id="cor2" data-valor onclick="selecionar_cor(this)" oncontextmenu="return reverter_cor(this)"><i class="fas fa-palette"></i><i class="fas fa-paint-brush"></i></div>
@@ -446,6 +481,7 @@
 	selcor = ['#d00707', '#4ac54a', '#0078de', '#ecec00', '#ffb837', '#b24ac5'];
 	seletor = 0;
 	tentativa = 0;
+	restantes = 7;
 
 	window.onload = function(){
 		while(true){
@@ -513,6 +549,8 @@
 		if(tentativa == 8 || tentativa == -1){
 			return false;
 		}
+
+		document.getElementById('remaining').innerText=restantes--;
 
 		n1 = parseInt(document.getElementById("cor1").dataset.valor);
 		n2 = parseInt(document.getElementById("cor2").dataset.valor);
