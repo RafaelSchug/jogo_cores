@@ -487,6 +487,12 @@
 	tentativa = 0;
 	restantes = 7;
 
+	//Definir sons
+	var audio = new Audio('unlock.mp3');
+	var success = new Audio('success.mp3');
+	var fail = new Audio('fail.mp3');
+	var error = new Audio('error.mp3');
+
 	window.onload = function(){
 		while(true){
 			n = Math.round(Math.random()*5);
@@ -546,6 +552,50 @@
 	}
 	
 
+	function verificar_repeticao(){
+		document.getElementsByClassName('cor1')[0].style.border='';
+		document.getElementsByClassName('cor2')[0].style.border='';
+		document.getElementsByClassName('cor3')[0].style.border='';
+		c1 = document.getElementsByClassName('cor1')[0].dataset.valor;
+		c2 = document.getElementsByClassName('cor2')[0].dataset.valor;
+		c3 = document.getElementsByClassName('cor3')[0].dataset.valor;
+		
+		// --------------------------------------
+
+		if(c1 == ""){
+			document.getElementsByClassName('cor1')[0].style.border = "5px double black";
+			return false;
+		}
+		if(c2 == ""){
+			document.getElementsByClassName('cor2')[0].style.border = "5px double black";
+			return false;
+		}
+		if(c3 == ""){
+			document.getElementsByClassName('cor3')[0].style.border = "5px double black";
+			return false;
+		}
+
+		// --------------------------------------
+
+		if(c1 == c2 ){
+			document.getElementsByClassName('cor1')[0].style.border = "5px double black";
+			document.getElementsByClassName('cor2')[0].style.border = "5px double black";
+			c2 == c3 ? document.getElementsByClassName('cor3')[0].style.border = "5px double black" : 0;
+			return false;
+		}
+		if(c2 == c3){
+			document.getElementsByClassName('cor2')[0].style.border = "5px double black";
+			document.getElementsByClassName('cor3')[0].style.border = "5px double black";
+			return false;
+		}
+		if(c3 == c1){
+			document.getElementsByClassName('cor3')[0].style.border = "5px double black";
+			document.getElementsByClassName('cor1')[0].style.border = "5px double black";
+			return false;
+		}
+		return true;
+	}
+
 
 	function verificar(){
 
@@ -553,6 +603,12 @@
 		if(tentativa == 8 || tentativa == -1){
 			return false;
 		}
+
+	 	if(verificar_repeticao() == false){
+	 		error.play();
+	 		return false;
+	 	}
+
 
 		document.getElementById('remaining').innerText=restantes--;
 
@@ -604,9 +660,7 @@
 		
 	}
 
-	var audio = new Audio('unlock.mp3');
-	var success = new Audio('success.mp3');
-	var fail = new Audio('fail.mp3');
+	
 
 	function resultado(val) {
 		if(val == 1){
